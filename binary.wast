@@ -635,7 +635,7 @@
 (assert_malformed
   (module binary
       "\00asm" "\01\00\00\00"
-      "\05\03\01"                           ;; table section with one entry
+      "\04\03\01"                           ;; table section with one entry
       "\70"                                 ;; anyfunc
       "\02"                                 ;; malformed table limits flag
   )
@@ -644,7 +644,7 @@
 (assert_malformed
   (module binary
       "\00asm" "\01\00\00\00"
-      "\05\04\01"                           ;; table section with one entry
+      "\04\04\01"                           ;; table section with one entry
       "\70"                                 ;; anyfunc
       "\02"                                 ;; malformed table limits flag
       "\00"                                 ;; dummy byte
@@ -654,7 +654,7 @@
 (assert_malformed
   (module binary
       "\00asm" "\01\00\00\00"
-      "\05\06\01"                           ;; table section with one entry
+      "\04\06\01"                           ;; table section with one entry
       "\70"                                 ;; anyfunc
       "\81\00"                              ;; malformed table limits flag as LEB128
       "\00\00"                              ;; dummy bytes
