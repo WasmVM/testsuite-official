@@ -875,6 +875,7 @@
     "\00asm" "\01\00\00\00"
     "\05\03\01"                             ;; memory section
     "\00\01"                                ;; memory 0
+    "\0c\01\02"                             ;; data count section with inconsistent segment count (2 declared, 1 given)
     "\0b\07\02"                             ;; data with inconsistent segment count (2 declared, 1 given)
     "\00\41\00\0b\01\61"                    ;; data 0
     ;; "\00\41\01\0b\01\62"                 ;; data 1 (missed)
@@ -888,6 +889,7 @@
     "\00asm" "\01\00\00\00"
     "\05\03\01"                             ;; memory section
     "\00\01"                                ;; memory 0
+    "\0c\01\01"                             ;; data count section with inconsistent segment count (1 declared, 2 given)
     "\0b\0d\01"                             ;; data with inconsistent segment count (1 declared, 2 given)
     "\00\41\00\0b\01\61"                    ;; data 0
     "\00\41\01\0b\01\62"                    ;; data 1 (redundant)
@@ -901,6 +903,7 @@
     "\00asm" "\01\00\00\00"
     "\05\03\01"                             ;; memory section
     "\00\01"                                ;; memory 0
+    "\0c\01\01"                             ;; data count section
     "\0b\0c\01"                             ;; data section
     "\00\41\03\0b"                          ;; data segment 0
     "\07"                                   ;; data segment size with inconsistent lengths (7 declared, 6 given)
@@ -915,6 +918,7 @@
     "\00asm" "\01\00\00\00"
     "\05\03\01"                             ;; memory section
     "\00\01"                                ;; memory 0
+    "\0c\01\01"                             ;; data count section
     "\0b\0c\01"                             ;; data section
     "\00\41\00\0b"                          ;; data segment 0
     "\05"                                   ;; data segment size with inconsistent lengths (5 declared, 6 given)
