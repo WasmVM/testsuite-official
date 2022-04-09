@@ -2516,7 +2516,12 @@
 (assert_return (invoke "nearest" (f32.const -nan:0x200000)) (f32.const nan:arithmetic))
 (assert_return (invoke "nearest" (f32.const nan)) (f32.const nan:canonical))
 (assert_return (invoke "nearest" (f32.const nan:0x200000)) (f32.const nan:arithmetic))
-
+(assert_return (invoke "nearest" (f32.const 0x3p-2)) (f32.const 0x1p+0))
+(assert_return (invoke "nearest" (f32.const 0x2.1p-1)) (f32.const 0x1p+0))
+(assert_return (invoke "nearest" (f32.const 0x3p-1)) (f32.const 0x1p+1))
+(assert_return (invoke "nearest" (f32.const 0x1.2p+1)) (f32.const 0x1p+1))
+(assert_return (invoke "nearest" (f32.const 0x1.4p+1)) (f32.const 0x1p+1))
+(assert_return (invoke "nearest" (f32.const 0x1.5p+1)) (f32.const 0x3p+0))
 
 ;; Type check
 
