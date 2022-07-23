@@ -961,11 +961,3 @@
   )
   "unknown type"
 )
-
-
-;; Unbound function in table
-
-(assert_invalid
-  (module (table funcref (elem 0 0)))
-  "unknown function"
-)

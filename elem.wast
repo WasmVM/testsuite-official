@@ -262,50 +262,50 @@
   "type mismatch"
 )
 
-(assert_invalid
+(assert_malformed
   (module 
     (table 1 funcref)
     (elem (offset (;empty instruction sequence;)))
   )
-  "type mismatch"
+  "constant expression required"
 )
 
-(assert_invalid
+(assert_malformed
   (module
     (table 1 funcref)
     (elem (offset (i32.const 0) (i32.const 0)))
   )
-  "type mismatch"
+  "unexpected end"
 )
 
-(assert_invalid
+(assert_malformed
   (module
     (global (import "test" "global-i32") i32)
     (table 1 funcref)
     (elem (offset (global.get 0) (global.get 0)))
   )
-  "type mismatch"
+  "unexpected end"
 )
 
-(assert_invalid
+(assert_malformed
   (module
     (global (import "test" "global-i32") i32)
     (table 1 funcref)
     (elem (offset (global.get 0) (i32.const 0)))
   )
-  "type mismatch"
+  "unexpected end"
 )
 
 
-(assert_invalid
+(assert_malformed
   (module
     (table 1 funcref)
     (elem (i32.ctz (i32.const 0)))
   )
-  "constant expression required"
+  "unexpected end"
 )
 
-(assert_invalid
+(assert_malformed
   (module
     (table 1 funcref)
     (elem (nop))
@@ -313,7 +313,7 @@
   "constant expression required"
 )
 
-(assert_invalid
+(assert_malformed
   (module
     (table 1 funcref)
     (elem (offset (nop) (i32.const 0)))
@@ -321,12 +321,12 @@
   "constant expression required"
 )
 
-(assert_invalid
+(assert_malformed
   (module
     (table 1 funcref)
     (elem (offset (i32.const 0) (nop)))
   )
-  "constant expression required"
+  "unexpected end"
 )
 
 ;; Use of internal globals in constant expressions is not allowed in MVP.
@@ -350,15 +350,6 @@
      (elem (global.get 1))
    )
    "unknown global 1"
-)
-
-(assert_invalid
-   (module 
-     (global (import "test" "global-mut-i32") (mut i32))
-     (table 1 funcref)
-     (elem (global.get 0))
-   )
-   "constant expression required"
 )
 
 ;; Two elements target the same slot
