@@ -36,11 +36,11 @@
   (module (table 1 funcref) (elem (i64.const 0)))
   "type mismatch"
 )
-(assert_invalid
+(assert_malformed
   (module (table 1 funcref) (elem (i32.ctz (i32.const 0))))
-  "constant expression required"
+  "unexpected end"
 )
-(assert_invalid
+(assert_malformed
   (module (table 1 funcref) (elem (nop)))
   "constant expression required"
 )

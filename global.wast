@@ -263,32 +263,32 @@
 (module (global (mut f32) (f32.const 0)) (export "a" (global 0)))
 (module (global (export "a") (mut f32) (f32.const 0)))
 
-(assert_invalid
+(assert_malformed
   (module (global f32 (f32.neg (f32.const 0))))
-  "constant expression required"
+  "unexpected end"
 )
 
-(assert_invalid
+(assert_malformed
   (module (global f32 (local.get 0)))
   "constant expression required"
 )
 
-(assert_invalid
+(assert_malformed
   (module (global f32 (f32.neg (f32.const 1))))
-  "constant expression required"
+  "unexpected end"
 )
 
-(assert_invalid
+(assert_malformed
   (module (global i32 (i32.const 0) (nop)))
-  "constant expression required"
+  "unexpected end"
 )
 
-(assert_invalid
+(assert_malformed
   (module (global i32 (i32.ctz (i32.const 0))))
-  "constant expression required"
+  "unexpected end"
 )
 
-(assert_invalid
+(assert_malformed
   (module (global i32 (nop)))
   "constant expression required"
 )
@@ -298,24 +298,24 @@
   "type mismatch"
 )
 
-(assert_invalid
+(assert_malformed
   (module (global i32 (i32.const 0) (i32.const 0)))
-  "type mismatch"
+  "unexpected end"
 )
 
-(assert_invalid
+(assert_malformed
   (module (global i32 (;empty instruction sequence;)))
-  "type mismatch"
+  "constant expression required"
 )
 
-(assert_invalid
+(assert_malformed
   (module (global (import "test" "global-i32") i32) (global i32 (global.get 0) (global.get 0)))
-  "type mismatch"
+  "unexpected end"
 )
 
-(assert_invalid
+(assert_malformed
   (module (global (import "test" "global-i32") i32) (global i32 (i32.const 0) (global.get 0)))
-  "type mismatch"
+  "unexpected end"
 )
 
 (assert_invalid
